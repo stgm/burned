@@ -1,0 +1,8 @@
+<p class="lead">Welcome. What should people call you?</p>
+<form action="/welcome" method="post" class="stack">
+  <%= csrf_field %>
+  <label for="name">Your name</label>
+  <input id="name" name="name" type="text" autocomplete="name" maxlength="60" autofocus required>
+  <p class="small">Your first name also becomes your @mention.</p>
+  <button type="submit" class="primary">Continue</button>
+</form>

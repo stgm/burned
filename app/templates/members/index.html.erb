@@ -1,0 +1,25 @@
+<section class="page">
+  <a class="back" href="/teams/<%= team[:id] %>/threads">&lsaquo; Threads</a>
+  <h1>People in <%= team[:name] %></h1>
+  <form action="/teams/<%= team[:id] %>/members" method="post" class="inline-form">
+    <%= csrf_field %>
+    <input name="email" type="email" placeholder="name@example.com" required aria-label="Email address">
+    <button type="submit" class="primary">Invite to team</button>
+  </form>
+  <ul class="people">
+    <% members.each do |m| %>
+      <li>
+        <%= person_avatar(m) %>
+        <span class="who"><strong><%= m[:name] %></strong><small>@<%= m[:handle] %><%= " · team admin" if m[:team_admin] %></small></span>
+      </li>
+    <% end %>
+  </ul>
+  <% if invited.any? %>
+    <h2>Invited</h2>
+    <ul class="people">
+      <% invited.each do |m| %>
+        <li><%= person_avatar(m) %><span class="who"><strong><%= m[:name] || m[:email] %></strong><small>Has not answered yet</small></span></li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>

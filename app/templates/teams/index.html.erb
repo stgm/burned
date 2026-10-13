@@ -1,0 +1,35 @@
+<section class="page">
+  <h1>Teams</h1>
+
+  <% if invitations.any? %>
+    <h2>Invitations</h2>
+    <ul class="people">
+      <% invitations.each do |i| %>
+        <li>
+          <span class="who"><strong><%= i[:name] %></strong><small>Invited by <%= i[:inviter_name] || i[:inviter_email] || "someone" %></small></span>
+          <span class="row-actions">
+            <form action="/invitations/<%= i[:id] %>/accept" method="post"><%= csrf_field %><button class="primary" type="submit">Join</button></form>
+            <form action="/invitations/<%= i[:id] %>/decline" method="post"><%= csrf_field %><button type="submit">Decline</button></form>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <h2>Your teams</h2>
+  <% if teams.empty? %><p class="lead">You are not in a team yet. Start one, or wait for an invitation.</p><% end %>
+  <ul class="people">
+    <% teams.each do |t| %>
+      <li><%= avatar(name: t[:name], look: t[:id] * 7919) %><a class="who" href="/teams/<%= t[:id] %>"><strong><%= t[:name] %></strong></a></li>
+    <% end %>
+  </ul>
+
+  <h2>Start a team</h2>
+  <form action="/teams" method="post" class="inline-form">
+    <%= csrf_field %>
+    <input name="name" type="text" placeholder="Team name" maxlength="60" required aria-label="Team name">
+    <button type="submit" class="primary">Create team</button>
+  </form>
+
+  <% if current_user[:admin] %><p><a href="/people">Invite people to the app</a></p><% end %>
+</section>

@@ -1,0 +1,9 @@
+<% recent.each do |r| %>
+  <a class="bubble lvl-<%= r[:level] %><%= " bubbling" if r[:bubbling] %><%= " current" if thread && thread[:id] == r[:id] %>"
+     href="/threads/<%= r[:id] %>" title="<%= r[:title] %> · <%= r[:team_name] %>">
+    <span class="b-title"><%= r[:title] %></span>
+    <span class="b-team"><%= r[:team_name] %></span>
+    <% if r[:bubbling] %><span class="b-count"><%= bubble_count(r) %></span><% end %>
+  </a>
+<% end %>
+<% if recent.empty? %><span class="hint">Threads you take part in show up here</span><% end %>

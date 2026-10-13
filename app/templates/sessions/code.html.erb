@@ -1,0 +1,8 @@
+<p class="lead">We mailed a code to <strong><%= email %></strong>. It works for 10 minutes.</p>
+<form action="/login/code" method="post" class="stack">
+  <%= csrf_field %>
+  <label for="code">Code</label>
+  <input id="code" name="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9 ]*" maxlength="7" autofocus required class="code">
+  <button type="submit" class="primary">Sign in</button>
+</form>
+<p class="small"><a href="/login">Use a different email address</a></p>

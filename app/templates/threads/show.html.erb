@@ -1,0 +1,48 @@
+<section class="thread" id="thread" data-last-id="<%= messages.last ? messages.last[:id] : 0 %>">
+  <header class="thread-head">
+    <div class="titles">
+      <a class="back" href="/teams/<%= team[:id] %>/threads">&lsaquo; Threads</a>
+      <h1><%= thread[:title] %></h1>
+      <% if source %><p class="from">Started from <a href="/threads/<%= source[:id] %>"><%= source[:title] %></a></p><% end %>
+    </div>
+    <div class="head-tools">
+      <details class="quiet">
+        <summary class="pill lvl-<%= state[:level] %>" title="When this thread bubbles up for you">
+          <%= {"all" => "Bubbles on every message", "mentions" => "Bubbles on @mentions", "never" => "Never bubbles"}[state[:level]] %>
+        </summary>
+        <form action="/threads/<%= thread[:id] %>/quiet" method="post" class="quiet-menu">
+          <%= csrf_field %>
+          <button name="level" value="all" type="submit"<%= " class=on" if state[:level] == "all" %>>Every message</button>
+          <button name="level" value="mentions" type="submit"<%= " class=on" if state[:level] == "mentions" %>>Only @mentions</button>
+          <button name="level" value="never" type="submit"<%= " class=on" if state[:level] == "never" %>>Never</button>
+        </form>
+      </details>
+      <form action="/threads/<%= thread[:id] %>/pin" method="post" class="pin-form">
+        <%= csrf_field %>
+        <button class="pill<%= " pinned" if thread[:pinned_at] %>" name="pinned" value="<%= thread[:pinned_at] ? "0" : "1" %>" type="submit"
+          title="<%= thread[:pinned_at] ? "Unpin for everyone" : "Pin to the top of the list for everyone" %>"><%= thread[:pinned_at] ? "Pinned" : "Pin" %></button>
+      </form>
+      <button type="button" class="pill" id="select-toggle" aria-pressed="false">Select</button>
+    </div>
+  </header>
+
+  <div class="messages" id="messages" data-slot="messages"
+       data-members="<%= members.map { |m| {handle: m[:handle], name: m[:name]} }.to_json %>">
+    <%= render "chat/messages", messages: messages, members: members, first_unread_id: first_unread_id, current_user: current_user %>
+  </div>
+
+  <form id="split-form" class="splitbar" action="/threads/<%= thread[:id] %>/split" method="post" hidden>
+    <%= csrf_field %>
+    <span class="split-count" id="split-count">0 selected</span>
+    <input name="title" type="text" placeholder="New thread title (optional)" maxlength="100" aria-label="New thread title">
+    <button type="submit" class="primary" id="split-go">Move to new thread</button>
+    <button type="button" id="split-cancel">Cancel</button>
+  </form>
+
+  <form class="composer" id="composer" action="/threads/<%= thread[:id] %>/messages" method="post">
+    <%= csrf_field %>
+    <div class="mention-menu" id="mention-menu" hidden></div>
+    <textarea name="body" id="body" rows="1" placeholder="Message <%= thread[:title] %>" autocomplete="off" required></textarea>
+    <button type="submit" class="send primary" aria-label="Send">Send</button>
+  </form>
+</section>

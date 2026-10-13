@@ -1,0 +1,29 @@
+<div class="list-head">
+  <h2><%= team[:name] %></h2>
+  <div class="list-actions">
+    <a class="round" href="/teams/<%= team[:id] %>/members" title="People" aria-label="People">@</a>
+    <a class="round" href="/teams/<%= team[:id] %>/threads/new" title="Start a thread" aria-label="Start a thread">+</a>
+  </div>
+</div>
+<ul class="thread-list">
+  <% threads.each do |t| %>
+    <li>
+      <a class="thread-row lvl-<%= t[:level] %><%= " pinned" if t[:pinned_at] %><%= " bubbling" if t[:bubbling] %><%= " current" if thread && thread[:id] == t[:id] %>" href="/threads/<%= t[:id] %>">
+        <span class="row-top">
+          <span class="row-title"><%= t[:title] %></span>
+          <% if t[:pinned_at] %><%= pin_icon %><% end %>
+          <%= time_tag(t[:last_message_at], css: "when row-time") %>
+        </span>
+        <span class="row-bottom">
+          <span class="row-preview"><%= preview_text(t) %></span>
+          <% if t[:bubbling] %>
+            <span class="b-count"><%= bubble_count(t) %></span>
+          <% elsif t[:level] != "all" %>
+            <span class="pill lvl-<%= t[:level] %>"><%= LEVEL_LABELS[t[:level]] %></span>
+          <% end %>
+        </span>
+      </a>
+    </li>
+  <% end %>
+</ul>
+<% if threads.empty? %><p class="empty">No threads yet.</p><% end %>

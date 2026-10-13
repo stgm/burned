@@ -1,0 +1,18 @@
+<section class="page">
+  <h1>People</h1>
+  <p class="lead">Everyone here can sign in. Invite someone by email and they get a code when they sign in.</p>
+  <form action="/people" method="post" class="inline-form">
+    <%= csrf_field %>
+    <input name="email" type="email" placeholder="name@example.com" required aria-label="Email address">
+    <button type="submit" class="primary">Invite to the app</button>
+  </form>
+  <ul class="people">
+    <% people.each do |p| %>
+      <li>
+        <%= person_avatar(p) %>
+        <span class="who"><strong><%= p[:name] || "Not signed in yet" %></strong><small><%= p[:email] %><%= " · admin" if p[:admin] %></small></span>
+      </li>
+    <% end %>
+  </ul>
+  <p><a href="/teams">Back to teams</a></p>
+</section>

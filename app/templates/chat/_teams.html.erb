@@ -1,0 +1,17 @@
+<p class="teams-title">Teams</p>
+<ul class="team-list">
+  <% teams.each do |t| %>
+    <li>
+      <a class="team-link<%= " current" if team && team[:id] == t[:id] %>" href="/teams/<%= t[:id] %>">
+        <%= avatar(name: t[:name], look: t[:id] * 7919, size: "sm") %>
+        <span class="team-name"><%= t[:name] %></span>
+        <% if bubbling[t[:id]].to_i.positive? %><span class="b-count"><%= bubbling[t[:id]] %></span><% end %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+<a class="team-link manage" href="/teams">
+  <span class="manage-plus">+</span>
+  <span class="team-name">Teams &amp; invitations</span>
+  <% if invitation_count.positive? %><span class="b-count"><%= invitation_count %></span><% end %>
+</a>

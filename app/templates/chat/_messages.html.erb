@@ -1,0 +1,29 @@
+<% messages.each do |m| %>
+  <% handles = members.map { |member| member[:handle] }.compact %>
+  <% if first_unread_id == m[:id] %><div class="new-divider"><span>New</span></div><% end %>
+  <% if m[:kind] == "thread_link" %>
+    <div class="msg link" data-id="<%= m[:id] %>">
+      <%= author_avatar(m, size: "sm") %>
+      <div class="msg-body">
+        <div class="msg-meta"><b><%= m[:author_name] || m[:author_email] || "Someone" %></b> <%= time_tag(m[:created_at]) %></div>
+        <% if m[:linked_thread_id] %>
+          <a class="thread-card" href="/threads/<%= m[:linked_thread_id] %>">
+            <span class="card-label">Moved to a new thread</span>
+            <span class="card-title"><%= m[:linked_title] %></span>
+          </a>
+        <% else %>
+          <p class="msg-text">Moved to a thread that no longer exists.</p>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <div class="msg<%= " mine" if m[:user_id] == current_user[:id] %>" data-id="<%= m[:id] %>">
+      <input class="pick" type="checkbox" name="message_ids[]" value="<%= m[:id] %>" form="split-form" aria-label="Select message">
+      <%= author_avatar(m) %>
+      <div class="msg-body">
+        <div class="msg-meta"><b><%= m[:author_name] || m[:author_email] || "Someone" %></b> <%= time_tag(m[:created_at]) %></div>
+        <div class="msg-text"><%= message_html(m, handles) %></div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

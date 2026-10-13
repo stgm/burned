@@ -1,0 +1,9 @@
+<div data-last-id="<%= last_id %>">
+  <template data-slot="messages"><%= render "chat/messages", messages: messages, members: members, first_unread_id: nil, current_user: current_user %></template>
+  <template data-slot="recent"><%= render "chat/recent", recent: recent, thread: thread %></template>
+  <% if team %>
+    <template data-slot="list"><%= render "chat/thread_list", team: team, threads: team_threads, thread: thread %></template>
+  <% end %>
+  <template data-slot="teams"><%= render "chat/teams", teams: teams, bubbling: bubbling, team: team, invitation_count: invitation_count %></template>
+  <template data-slot="toggle-dot" data-active="<%= bubbling.values.sum.positive? %>"></template>
+</div>

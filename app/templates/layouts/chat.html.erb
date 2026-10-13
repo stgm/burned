@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#12221b">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.svg">
+    <title><%= thread ? "#{thread[:title]} · " : "" %><%= team ? "#{team[:name]} · " : "" %>Burned</title>
+    <%= stylesheet_tag "app" %>
+  </head>
+  <body class="chat">
+    <div class="shell<%= team ? " has-team" : "" %>" id="shell" data-pane="<%= pane %>"
+      data-thread-id="<%= thread && thread[:id] %>" data-team-id="<%= team && team[:id] %>"
+      data-csrf="<%= csrf_token %>">
+      <header class="topbar">
+        <button class="round teams-toggle" type="button" id="teams-toggle" title="Teams" aria-label="Teams">
+          &#9776;<span class="toggle-dot" data-slot="toggle-dot" <%= "hidden" unless bubbling.values.sum.positive? %>></span>
+        </button>
+        <a class="logo-small" href="/">Burned</a>
+        <div class="recent" data-slot="recent" aria-label="Threads you took part in recently">
+          <%= render "chat/recent", recent: recent, thread: thread %>
+        </div>
+      </header>
+
+      <aside class="teams" id="teams" aria-label="Teams">
+        <div data-slot="teams">
+          <%= render "chat/teams", teams: teams, bubbling: bubbling, team: team, invitation_count: invitation_count %>
+        </div>
+        <div class="me">
+          <%= person_avatar(current_user, size: "sm") %>
+          <span class="me-name"><%= current_user[:name] %></span>
+          <form action="/logout" method="post"><%= csrf_field %><button class="link" type="submit">Sign out</button></form>
+        </div>
+      </aside>
+
+      <% if team %>
+        <nav class="list-pane" aria-label="Threads in <%= team[:name] %>">
+          <div data-slot="list">
+            <%= render "chat/thread_list", team: team, threads: team_threads, thread: thread %>
+          </div>
+        </nav>
+      <% end %>
+
+      <main class="detail">
+        <% if flash[:alert] %><p class="flash alert"><%= flash[:alert] %></p><% end %>
+        <% if flash[:notice] %><p class="flash notice"><%= flash[:notice] %></p><% end %>
+        <%= yield %>
+      </main>
+      <div class="scrim" id="scrim"></div>
+    </div>
+    <%= javascript_tag "app" %>
+  </body>
+</html>

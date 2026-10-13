@@ -1,0 +1,12 @@
+<section class="page">
+  <a class="back" href="/teams/<%= team[:id] %>/threads">&lsaquo; Threads</a>
+  <h1>Start a thread in <%= team[:name] %></h1>
+  <form action="/teams/<%= team[:id] %>/threads" method="post" class="stack new-thread" id="new">
+    <%= csrf_field %>
+    <label for="title">Title</label>
+    <input id="title" name="title" type="text" placeholder="What is it about?" maxlength="100" autofocus required>
+    <label for="first">First message (optional)</label>
+    <textarea id="first" name="body" rows="3"></textarea>
+    <button type="submit" class="primary">Start thread</button>
+  </form>
+</section>
