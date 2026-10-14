@@ -15,9 +15,10 @@ Hanami.app.register_provider(:mailers, namespace: true) do
         Hanami::Mailer::Delivery::SMTP.new(
           address: ENV.fetch("SMTP_ADDRESS"),
           port: Integer(ENV.fetch("SMTP_PORT", 587)),
+          domain: ENV.fetch("SMTP_DOMAIN", "localhost.localdomain"),
           user_name: ENV["SMTP_USERNAME"],
           password: ENV["SMTP_PASSWORD"],
-          authentication: ENV.fetch("SMTP_AUTHENTICATION", "plain").to_sym
+          authentication: ENV["SMTP_AUTHENTICATION"]&.to_sym
         )
       else
         Burned::LogDelivery.new(target["logger"])

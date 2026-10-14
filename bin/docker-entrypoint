@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Build DATABASE_URL from separate parts when it is not set directly.
+if [ -z "${DATABASE_URL:-}" ] && [ -n "${DATABASE_HOST:-}" ]; then
+  DATABASE_URL="$(ruby -ruri -e '
+    e = ENV.method(:fetch)
+    enc = URI.method(:encode_www_form_component)
+    puts "postgres://#{enc.(e.("DATABASE_USER"))}:#{enc.(e.("DATABASE_PASSWORD"))}@#{e.("DATABASE_HOST")}/#{e.("DATABASE_NAME")}"
+  ')"
+  export DATABASE_URL
+  export PGSSLMODE="${PGSSLMODE:-require}"
+fi
+
+# Create the database on first use, then migrate it and run the seeds.
+# "db prepare" would load config/db/structure.sql, which is in SQLite syntax, and
+# "db migrate" would dump the structure again, so use the separate commands instead.
+if [ "${3:-}" == "puma" ]; then
+  bundle exec hanami db create
+  bundle exec hanami db migrate --dump=false
+  bundle exec hanami db seed
+fi
+
+exec "${@}"

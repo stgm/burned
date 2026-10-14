@@ -1,0 +1,32 @@
+hostname: rounds.local
+ingressClass: nginx
+image: fnwicr.azurecr.io/rounds
+tag: latest
+
+mail:
+  address: smtp.example.com
+  port: "465"
+  domain: example.nl
+  from: rounds@example.nl
+
+database:
+  host: postgres.example.com
+  name: rounds
+  user: user
+
+# Set to create or find this admin on every start.
+admin:
+  email: ""
+
+azure:
+  keyvaultName: keyvaultName
+  resourceGroup: resourceGroupName
+  subscriptionId: subscriptionId
+  tenantId: tenantId
+  clientId: clientId
+  identityName: identityName
+  secrets:
+    - name: minprog-db-password
+      key: DATABASE_PASSWORD
+    - name: rounds-session-secret
+      key: SESSION_SECRET

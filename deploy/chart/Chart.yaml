@@ -1,0 +1,6 @@
+apiVersion: v2
+name: rounds
+description: Rounds group chat
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

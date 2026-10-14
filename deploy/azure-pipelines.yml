@@ -1,0 +1,29 @@
+trigger:
+ - main
+
+pr: none
+
+variables:
+ - group: k8s
+
+pool: k8s
+
+jobs:
+- job: rounds
+  steps:
+  - script: |
+      set -euxo pipefail
+      docker build -f deploy/Dockerfile -t "fnwicr.azurecr.io/rounds:latest" .
+      docker push "fnwicr.azurecr.io/rounds:latest"
+    displayName: Build Docker container
+
+  - script: |
+      set -euxo pipefail
+      VERSION="0.${BUILD_BUILDNUMBER}"
+      NAME="rounds"
+      helm package --version "${VERSION}" --app-version "${VERSION}" deploy/chart
+      helm push "${NAME}-${VERSION}.tgz" oci://fnwicr.azurecr.io/helm
+      curl "https://k8s.datanose.nl/gitops-updater?name=rounds&secret=${UPDATER_SECRET}&version=${VERSION}"
+    displayName: Build Helm chart and push to registry
+    env:
+      UPDATER_SECRET: $(DEPLOY_SECRET)

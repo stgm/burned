@@ -1,0 +1,14 @@
+.git
+.env*.local
+deploy
+
+# Dependencies are installed in the image.
+node_modules
+/vendor/bundle
+
+# Logs, databases and compiled assets are not part of the image.
+log/*
+tmp/*
+db/*.sqlite
+public/assets
+public/assets.json

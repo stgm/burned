@@ -69,7 +69,7 @@ libpq installed. Set these in the environment:
 | `SESSION_SECRET` | at least 64 random characters, for example `ruby -rsecurerandom -e 'puts SecureRandom.hex(48)'` |
 | `APP_URL` | public address, used in links inside mails |
 | `MAIL_FROM` | sender address of mails |
-| `SMTP_ADDRESS`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD`, `SMTP_AUTHENTICATION` | your mail server |
+| `SMTP_ADDRESS`, `SMTP_PORT`, `SMTP_DOMAIN`, `SMTP_USERNAME`, `SMTP_PASSWORD`, `SMTP_AUTHENTICATION` | your mail server |
 
 Then:
 
