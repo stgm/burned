@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Relations
-    class Mentions < Burned::DB::Relation
+    class Mentions < Rounds::DB::Relation
       schema :mentions, infer: true
     end
   end

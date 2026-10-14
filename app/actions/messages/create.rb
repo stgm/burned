@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module Messages
-      class Create < Burned::Actions::ChatAction
+      class Create < Rounds::Actions::ChatAction
         include Deps["chat.post_message"]
 
         def handle(request, response)

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Repos
-    class TeamRepo < Burned::DB::Repo
+    class TeamRepo < Rounds::DB::Repo
       def find(id)
         db[:teams].where(id: id).first
       end

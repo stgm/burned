@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   class Routes < Hanami::Routes
     root to: "home.show"
 

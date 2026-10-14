@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Auth
     # Lets someone sign in by adding their email address, and mails them about it.
-    class InviteToApp < Burned::Operation
+    class InviteToApp < Rounds::Operation
       include Deps["repos.user_repo", "mailers.app_invitation", "settings"]
 
       EMAIL = /\A[^@\s]+@[^@\s]+\.[^@\s]+\z/

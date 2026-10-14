@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module Threads
-      class Show < Burned::Actions::ChatAction
+      class Show < Rounds::Actions::ChatAction
         include Deps["repos.message_repo"]
 
         def handle(request, response)

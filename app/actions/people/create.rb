@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module People
       # Lets an app admin invite someone by email.
-      class Create < Burned::Actions::ChatAction
+      class Create < Rounds::Actions::ChatAction
         include Deps["auth.invite_to_app"]
 
         def handle(request, response)

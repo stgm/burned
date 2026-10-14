@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Chat
     # Adds a message to a thread and records who it mentions.
-    class PostMessage < Burned::Operation
+    class PostMessage < Rounds::Operation
       include Deps["repos.team_repo", "repos.message_repo"]
 
       MAX_LENGTH = 5000

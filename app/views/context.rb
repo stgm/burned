@@ -1,7 +1,7 @@
 # auto_register: false
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Views
     class Context < Hanami::View::Context
     end

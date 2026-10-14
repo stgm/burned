@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Views
     module Profile
-      class Edit < Burned::View
+      class Edit < Rounds::View
         expose :current_user
       end
     end

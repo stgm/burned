@@ -1,4 +1,4 @@
-# Burned
+# Rounds
 
 Group chat for small teams, built with Hanami 3. Threads instead of channels, and no notifications. A thread only
 bubbles up when you asked it to.

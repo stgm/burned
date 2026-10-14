@@ -3,7 +3,7 @@
 
 require "hanami/view"
 
-module Burned
+module Rounds
   class View < Hanami::View
   end
 end

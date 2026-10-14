@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module Invitations
-      class Decline < Burned::Action
+      class Decline < Rounds::Action
         include Deps["repos.team_repo"]
 
         def handle(request, response)

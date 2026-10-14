@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module Teams
-      class Create < Burned::Actions::ChatAction
+      class Create < Rounds::Actions::ChatAction
         def handle(request, response)
           name = request.params[:name].to_s.strip
           if name.empty? || name.length > 60

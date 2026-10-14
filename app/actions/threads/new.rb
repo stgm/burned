@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module Threads
-      class New < Burned::Actions::ChatAction
+      class New < Rounds::Actions::ChatAction
         def handle(request, response)
           load_team(request, response, request.params[:team_id])
         end

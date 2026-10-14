@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module TestHelpers
     # Empties the database before each test and offers shortcuts to build people and teams.
     module Database
@@ -40,4 +40,4 @@ module Burned
   end
 end
 
-Hanami::Minitest::Test.include Burned::TestHelpers::Database
+Hanami::Minitest::Test.include Rounds::TestHelpers::Database

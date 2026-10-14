@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module Sessions
       # Signs a person in when their code is right.
-      class Verify < Burned::Action
+      class Verify < Rounds::Action
         public_action!
         include Deps["auth.verify_code"]
 

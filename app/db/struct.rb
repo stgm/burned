@@ -2,7 +2,7 @@
 
 require "hanami/db/struct"
 
-module Burned
+module Rounds
   module DB
     class Struct < Hanami::DB::Struct
     end

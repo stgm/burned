@@ -2,7 +2,7 @@
 
 require "hanami/db/repo"
 
-module Burned
+module Rounds
   module DB
     class Repo < Hanami::DB::Repo
       # Runs the block in a transaction.

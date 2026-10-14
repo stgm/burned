@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module Sessions
-      class Code < Burned::Action
+      class Code < Rounds::Action
         public_action!
 
         def handle(request, response)

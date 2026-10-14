@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Mailers
-    class AppInvitation < Burned::Mailer
+    class AppInvitation < Rounds::Mailer
       to { |user:| user[:email] }
-      subject { |inviter:| "#{inviter[:name] || inviter[:email]} invited you to Burned" }
+      subject { |inviter:| "#{inviter[:name] || inviter[:email]} invited you to Rounds" }
 
       expose :inviter
       expose :url

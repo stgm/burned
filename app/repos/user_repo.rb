@@ -2,9 +2,9 @@
 
 require "securerandom"
 
-module Burned
+module Rounds
   module Repos
-    class UserRepo < Burned::DB::Repo
+    class UserRepo < Rounds::DB::Repo
       def find(id)
         return nil if id.nil?
 

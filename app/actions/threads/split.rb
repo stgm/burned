@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module Threads
       # Moves selected messages into a new thread.
-      class Split < Burned::Actions::ChatAction
+      class Split < Rounds::Actions::ChatAction
         include Deps["chat.split_thread"]
 
         def handle(request, response)

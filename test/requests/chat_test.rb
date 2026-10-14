@@ -104,6 +104,6 @@ class ChatTest < Hanami::Minitest::RequestTest
   test "serves the manifest without signing in" do
     get "/manifest.webmanifest"
     assert_equal 200, last_response.status
-    assert_equal "Burned", JSON.parse(last_response.body)["name"]
+    assert_equal "Rounds", JSON.parse(last_response.body)["name"]
   end
 end

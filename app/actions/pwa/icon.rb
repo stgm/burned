@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module Pwa
-      class Icon < Burned::Action
+      class Icon < Rounds::Action
         public_action!
 
         SVG = <<~SVG

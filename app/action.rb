@@ -4,7 +4,7 @@
 require "hanami/action"
 require "dry/monads"
 
-module Burned
+module Rounds
   class Action < Hanami::Action
     # Provide `Success` and `Failure` for pattern matching on operation results
     include Dry::Monads[:result]
@@ -41,7 +41,7 @@ module Burned
         response.redirect_to "/login"
       end
 
-      request.env["burned.user"] = user
+      request.env["rounds.user"] = user
       response.redirect_to "/welcome" if user[:name].nil? && !self.class.unnamed_allowed?
     end
 
@@ -51,7 +51,7 @@ module Burned
     end
 
     def current_user(request)
-      request.env["burned.user"]
+      request.env["rounds.user"]
     end
 
     def ajax?(request)

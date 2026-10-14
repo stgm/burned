@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module Teams
       # Opens the most recent thread of a team.
-      class Show < Burned::Actions::ChatAction
+      class Show < Rounds::Actions::ChatAction
         def handle(request, response)
           team = load_team(request, response, request.params[:id])
           thread = thread_repo.latest_for_team(team[:id])

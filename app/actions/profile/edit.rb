@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module Profile
-      class Edit < Burned::Action
+      class Edit < Rounds::Action
         unnamed_allowed!
 
         def handle(request, response)

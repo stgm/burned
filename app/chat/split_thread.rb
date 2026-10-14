@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Chat
     # Moves selected messages into a new thread and leaves a link to it in the old thread.
-    class SplitThread < Burned::Operation
+    class SplitThread < Rounds::Operation
       include Deps["repos.thread_repo", "repos.message_repo"]
 
       def call(thread:, user:, message_ids:, title:)

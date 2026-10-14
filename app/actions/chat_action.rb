@@ -1,10 +1,10 @@
 # auto_register: false
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     # Base of every action that shows the chat frame: teams, thread list and recent threads.
-    class ChatAction < Burned::Action
+    class ChatAction < Rounds::Action
       include Deps["repos.team_repo", "repos.thread_repo"]
 
       before :load_frame

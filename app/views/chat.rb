@@ -1,10 +1,10 @@
 # auto_register: false
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Views
     # Base of every view that shows the chat frame. The layout needs these exposures too.
-    class Chat < Burned::View
+    class Chat < Rounds::View
       config.layout = "chat"
 
       expose :current_user, layout: true

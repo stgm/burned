@@ -2,7 +2,7 @@
 
 require "dry/types"
 
-module Burned
+module Rounds
   Types = Dry.Types(default: :strict)
 
   module Types

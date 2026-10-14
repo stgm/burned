@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Repos
-    class LoginCodeRepo < Burned::DB::Repo
+    class LoginCodeRepo < Rounds::DB::Repo
       def replace(user_id, digest, expires_at)
         db[:login_codes].where(user_id: user_id).delete
         db[:login_codes].insert(user_id: user_id, digest: digest, expires_at: expires_at, created_at: now)

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Repos
-    class ThreadRepo < Burned::DB::Repo
+    class ThreadRepo < Rounds::DB::Repo
       LEVELS = %w[all mentions never].freeze
       RECENT_LIMIT = 12
 

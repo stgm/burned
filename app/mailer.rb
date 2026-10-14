@@ -3,8 +3,8 @@
 
 require "hanami/mailer"
 
-module Burned
+module Rounds
   class Mailer < Hanami::Mailer
-    from ENV.fetch("MAIL_FROM", "burned@localhost")
+    from ENV.fetch("MAIL_FROM", "rounds@localhost")
   end
 end

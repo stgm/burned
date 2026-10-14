@@ -3,7 +3,7 @@
 
 require "cgi/escape"
 
-module Burned
+module Rounds
   module Views
     module Helpers
       FONTS = [

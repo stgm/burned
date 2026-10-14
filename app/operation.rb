@@ -3,7 +3,7 @@
 
 require "dry/operation"
 
-module Burned
+module Rounds
   class Operation < Dry::Operation
   end
 end

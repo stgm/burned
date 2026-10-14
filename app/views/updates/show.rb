@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Views
     module Updates
       # Renders only the parts of the page that change, for the page to swap in.
-      class Show < Burned::Views::Chat
+      class Show < Rounds::Views::Chat
         config.layout = false
 
         expose :messages

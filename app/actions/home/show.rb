@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module Home
       # Sends people to the most recent thread of the team they last used.
-      class Show < Burned::Action
+      class Show < Rounds::Action
         include Deps["repos.team_repo", "repos.thread_repo"]
 
         def handle(request, response)

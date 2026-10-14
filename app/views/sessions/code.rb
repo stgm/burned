@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Views
     module Sessions
-      class Code < Burned::View
+      class Code < Rounds::View
         expose :email
       end
     end

@@ -2,7 +2,7 @@
 
 require "cgi/escape"
 
-module Burned
+module Rounds
   # Reads and renders the text of chat messages.
   module Text
     MENTION = /(?<![\w@])@([a-z0-9_]+)/i

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Views
     module Threads
-      class New < Burned::Views::Chat
+      class New < Rounds::Views::Chat
       end
     end
   end

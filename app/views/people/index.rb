@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Views
     module People
-      class Index < Burned::Views::Chat
+      class Index < Rounds::Views::Chat
         expose :people
       end
     end

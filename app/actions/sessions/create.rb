@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Actions
     module Sessions
       # Mails a sign-in code and asks for it on the next page.
-      class Create < Burned::Action
+      class Create < Rounds::Action
         public_action!
         include Deps["auth.request_code"]
 

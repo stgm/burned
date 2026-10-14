@@ -2,11 +2,11 @@
 
 require "securerandom"
 
-module Burned
+module Rounds
   module Auth
     # Mails a six digit sign-in code to a known email address.
     # Always succeeds from the caller's point of view, so that nobody can find out who has an account.
-    class RequestCode < Burned::Operation
+    class RequestCode < Rounds::Operation
       include Deps[
         "repos.user_repo",
         "repos.login_code_repo",

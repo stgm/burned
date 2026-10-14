@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Repos
-    class MessageRepo < Burned::DB::Repo
+    class MessageRepo < Rounds::DB::Repo
       PAGE = 200
 
       def find(id)

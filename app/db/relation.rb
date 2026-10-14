@@ -2,7 +2,7 @@
 
 require "hanami/db/relation"
 
-module Burned
+module Rounds
   module DB
     class Relation < Hanami::DB::Relation
     end

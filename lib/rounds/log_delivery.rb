@@ -2,7 +2,7 @@
 
 require "hanami/mailer"
 
-module Burned
+module Rounds
   # Writes each mail to the logger and to log/mail.log instead of sending it.
   class LogDelivery < Hanami::Mailer::Delivery::Test
     def initialize(logger, file: Hanami.app.root.join("log", "mail.log"))

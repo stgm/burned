@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Mailers
-    class LoginCode < Burned::Mailer
+    class LoginCode < Rounds::Mailer
       to { |user:| user[:email] }
-      subject { |code:| "#{code} is your Burned sign-in code" }
+      subject { |code:| "#{code} is your Rounds sign-in code" }
 
       expose :code
     end

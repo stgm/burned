@@ -3,10 +3,10 @@
 require "openssl"
 require "rack/utils"
 
-module Burned
+module Rounds
   module Auth
     # Checks a sign-in code and returns the person it belongs to.
-    class VerifyCode < Burned::Operation
+    class VerifyCode < Rounds::Operation
       include Deps["repos.user_repo", "repos.login_code_repo", "settings"]
 
       MAX_ATTEMPTS = 5

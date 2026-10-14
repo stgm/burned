@@ -10,7 +10,7 @@
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.svg">
-    <title><%= thread ? "#{thread[:title]} · " : "" %><%= team ? "#{team[:name]} · " : "" %>Burned</title>
+    <title><%= thread ? "#{thread[:title]} · " : "" %><%= team ? "#{team[:name]} · " : "" %>Rounds</title>
     <%= stylesheet_tag "app" %>
   </head>
   <body class="chat">
@@ -21,7 +21,7 @@
         <button class="round teams-toggle" type="button" id="teams-toggle" title="Teams" aria-label="Teams">
           &#9776;<span class="toggle-dot" data-slot="toggle-dot" <%= "hidden" unless bubbling.values.sum.positive? %>></span>
         </button>
-        <a class="logo-small" href="/">Burned</a>
+        <a class="logo-small" href="/">Rounds</a>
         <div class="recent" data-slot="recent" aria-label="Threads you took part in recently">
           <%= render "chat/recent", recent: recent, thread: thread %>
         </div>

@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Burned
+module Rounds
   module Chat
     # Invites a person to a team. App admins can also bring in people who do not have an account yet.
-    class InviteToTeam < Burned::Operation
+    class InviteToTeam < Rounds::Operation
       include Deps[
         "repos.user_repo",
         "repos.team_repo",

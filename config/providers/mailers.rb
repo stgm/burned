@@ -21,7 +21,7 @@ Hanami.app.register_provider(:mailers, namespace: true) do
           authentication: ENV["SMTP_AUTHENTICATION"]&.to_sym
         )
       else
-        Burned::LogDelivery.new(target["logger"])
+        Rounds::LogDelivery.new(target["logger"])
       end
 
     register "delivery_method", delivery_method
